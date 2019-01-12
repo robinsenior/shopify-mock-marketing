@@ -65,6 +65,24 @@
         }
       },
       {
+        "package": "Imperial",
+        "repositoryURL": "https://github.com/vapor-community/Imperial.git",
+        "state": {
+          "branch": null,
+          "revision": "98fe8f176070ef7f0c6d7b3d73da0bd9296c8f0b",
+          "version": "0.8.0"
+        }
+      },
+      {
+        "package": "JWT",
+        "repositoryURL": "https://github.com/vapor/jwt.git",
+        "state": {
+          "branch": null,
+          "revision": "2e225c722bf26407c1c4bd11d341e48759f46095",
+          "version": "3.0.0"
+        }
+      },
+      {
         "package": "Multipart",
         "repositoryURL": "https://github.com/vapor/multipart.git",
         "state": {
@@ -96,8 +114,8 @@
         "repositoryURL": "https://github.com/vapor/sql.git",
         "state": {
           "branch": null,
-          "revision": "839cf96eba296d26151ff1d7a746e9fe35053584",
-          "version": "2.2.0"
+          "revision": "f77bcae7c95150cdab62095e7bf321ed8c7551bd",
+          "version": "2.3.0"
         }
       },
       {
@@ -177,8 +195,8 @@
         "repositoryURL": "https://github.com/vapor/vapor.git",
         "state": {
           "branch": null,
-          "revision": "157d3b15336caa882662cc75024dd04b2e225246",
-          "version": "3.1.0"
+          "revision": "54cbf396147aba77ecb32e7fc75a3d13251551b1",
+          "version": "3.1.1"
         }
       },
       {
