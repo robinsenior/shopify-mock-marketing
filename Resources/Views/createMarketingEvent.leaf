@@ -1,0 +1,20 @@
+#set("content") {
+	<h1>#(title)</h1>
+
+	<form method="post">
+		#if(csrfToken) {
+			<input type="hidden" name="csrfToken" value="#(csrfToken)">
+		}
+		
+		<div class="form-group">
+			<label for="short">Marketing Event</label>
+			<input type="text" name="short" class="form-control" id="short" #if(editing){value="#(acronym.short)"}/>
+		</div>
+		
+		<button type="submit" class="btn btn-primary">
+			#if(editing){Update} else{Submit}
+		</button>
+	</form>
+}
+
+#embed("base")

@@ -1,0 +1,25 @@
+#set("content") {
+
+	<h1>All Marketing Events</h1>
+
+	#if(count(marketingActivities) > 0) {
+		<table class="table table-bordered table-hover">
+			<thead class="thead-light">
+				<tr>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				#for(marketingEvent in marketingEvents) {
+					<tr>
+						<td>#(marketingEvent.description)</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	} else {
+		<h2>There aren't any marketing events yet!</h2>
+	}
+}
+
+#embed("base")
