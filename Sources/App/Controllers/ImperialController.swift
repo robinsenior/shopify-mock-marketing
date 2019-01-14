@@ -6,8 +6,8 @@ struct ImperialController: RouteCollection {
 		try router.oAuth(
 			from: Shopify.self,
 			authenticate: "login-shopify",
-			callback: "http://5cf8144d.ngrok.io/auth",
-			scope: ["read_products", "read_marketing_events"],
+			callback: "http://ea7a0296.ngrok.io/auth",
+			scope: ["read_products", "read_marketing_events", "write_marketing_events"],
 			completion: processShopifyLogin
 		)
 	}

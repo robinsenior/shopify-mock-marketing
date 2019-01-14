@@ -1,6 +1,6 @@
 import Vapor
 
-final class MarketingEvents: Content {
+struct MarketingEvents: Content {
 	enum CodingKeys: String, CodingKey {
 		case marketingEvents = "marketing_events"
 	}
@@ -8,7 +8,7 @@ final class MarketingEvents: Content {
 	let marketingEvents: [MarketingEvent]
 }
 
-final class MarketingEvent: Content {
+struct MarketingEvent: Content {
 	enum EventType: String, Content {
 		case ad
 		case post
@@ -29,6 +29,7 @@ final class MarketingEvent: Content {
 	}
 	
 	enum CodingKeys: String, CodingKey {
+		case id = "id"
 		case description = "description"
 		case eventType = "event_type"
 		case marketingChannel = "marketing_channel"
@@ -36,6 +37,7 @@ final class MarketingEvent: Content {
 		case startedAt = "started_at"
 	}
 	
+	let id: Int?
 	let description: String
 	let eventType: EventType
 	let marketingChannel: MarketingChannel
@@ -45,4 +47,9 @@ final class MarketingEvent: Content {
 
 extension MarketingEvents: ShopifyResource {
 	static var path: String { return "marketing_events.json" }
+}
+
+extension MarketingEvent: ShopifyCreatableResource {
+	static var path: String { return "marketing_events.json" }
+	static var identifier = "marketing_event"
 }
