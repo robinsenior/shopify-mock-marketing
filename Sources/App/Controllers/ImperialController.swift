@@ -3,10 +3,14 @@ import Imperial
 
 struct ImperialController: RouteCollection {
 	func boot(router: Router) throws {
+		let hostEnvKey: String = "APP_HOST"
+		let hostError = ImperialError.missingEnvVar(hostEnvKey)
+		let host = try Environment.get(hostEnvKey).value(or: hostError)
+		
 		try router.oAuth(
 			from: Shopify.self,
 			authenticate: "login-shopify",
-			callback: "http://ea7a0296.ngrok.io/auth",
+			callback: "\(host)/auth",
 			scope: ["read_products", "read_marketing_events", "write_marketing_events"],
 			completion: processShopifyLogin
 		)
