@@ -43,8 +43,8 @@ struct MarketingEventsController: RouteCollection {
 			id: nil,
 			description: data.description,
 			eventType: data.eventType,
-			marketingChannel: .display,
-			paid: false,
+			marketingChannel: data.marketingChannel,
+			paid: data.paid != nil ? true : false,
 			startedAt: Date()
 		)
 
@@ -66,5 +66,7 @@ struct CreateMarketingEventContext: Encodable {
 struct CreateMarketingEventData: Content {
 	let description: String
 	let eventType: MarketingEvent.EventType
+	let marketingChannel: MarketingEvent.MarketingChannel
+	let paid: String?
 	let csrfToken: String
 }
