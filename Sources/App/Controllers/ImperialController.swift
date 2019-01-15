@@ -11,7 +11,7 @@ struct ImperialController: RouteCollection {
 			from: Shopify.self,
 			authenticate: "login-shopify",
 			callback: "\(host)/auth",
-			scope: ["read_products", "read_marketing_events", "write_marketing_events"],
+			scope: ["read_marketing_events", "write_marketing_events"],
 			completion: processShopifyLogin
 		)
 	}
