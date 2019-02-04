@@ -4,7 +4,9 @@ import Authentication
 
 struct MarketingEventsController: RouteCollection {
 	func boot(router: Router) throws {
-		let marketingEventsRoute = router.grouped("marketing_events")
+		let authedRouter = router.grouped(AuthenticationMiddleware())
+		
+		let marketingEventsRoute = authedRouter.grouped("marketing_events")
 		marketingEventsRoute.get(use: getAllHandler)
 		marketingEventsRoute.get("new", use: createMarketingEventHandler)
 		marketingEventsRoute.post(CreateMarketingEventData.self, at: "new", use: createMarketingEventPostHandler)
