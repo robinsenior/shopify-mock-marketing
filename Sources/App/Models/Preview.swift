@@ -19,7 +19,7 @@ struct PreviewRequest: Content {
 	}
 	
 	let shopifyDomain: String
-	let shopID: Int
+	let shopID: String
 	let userID: Int
 	let locale: String
 	let previewTypes: [Preview.PreviewType]
