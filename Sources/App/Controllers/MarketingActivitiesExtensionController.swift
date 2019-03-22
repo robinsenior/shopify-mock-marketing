@@ -17,12 +17,11 @@ struct MarketingActivitiesExtensionController: RouteCollection {
 		marketingActivitiesRoute.post(PreviewRequest.self, at: "preview", use: previewHandler)
 		marketingActivitiesRoute.post(FormDataCreateRequest.self, at: "", use: createHandler)
 		marketingActivitiesRoute.patch("pause", use: pauseHandler)
+		marketingActivitiesRoute.patch("resume", use: resumeHandler)
+		marketingActivitiesRoute.patch(FormDataCreateRequest.self, at: "", use: updateHandler)
+		marketingActivitiesRoute.post(FormDataCreateRequest.self, at: "republish", use: republishHandler)
 		
 		// todo:
-		// PATCH / - update
-		// PATCH /pause - pause activity
-		// PATCH /resume - resume activity
-		// POST /republish - republish activity
 		// POST /load_field/:field_name
 	}
 	
@@ -52,7 +51,25 @@ struct MarketingActivitiesExtensionController: RouteCollection {
 		return req.future(response)
 	}
 	
+	func updateHandler(_ req: Request, data: FormDataCreateRequest) throws -> Future<HTTPResponse> {
+		let response = HTTPResponse(status: .ok)
+		
+		return req.future(response)
+	}
+	
+	func republishHandler(_ req: Request, data: FormDataCreateRequest) throws -> Future<HTTPResponse> {
+		let response = HTTPResponse(status: .ok)
+		
+		return req.future(response)
+	}
+	
 	func pauseHandler(_ req: Request) throws -> Future<HTTPResponse> {
+		let response = HTTPResponse(status: .ok)
+		
+		return req.future(response)
+	}
+	
+	func resumeHandler(_ req: Request) throws -> Future<HTTPResponse> {
 		let response = HTTPResponse(status: .ok)
 		
 		return req.future(response)
