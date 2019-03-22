@@ -16,6 +16,7 @@ struct MarketingActivitiesExtensionController: RouteCollection {
 		marketingActivitiesRoute.post(FormDataReloadRequest.self, at: "reload_form_data", use: reloadFormDataHandler)
 		marketingActivitiesRoute.post(PreviewRequest.self, at: "preview", use: previewHandler)
 		marketingActivitiesRoute.post(FormDataCreateRequest.self, at: "", use: createHandler)
+		marketingActivitiesRoute.patch("pause", use: pauseHandler)
 		
 		// todo:
 		// PATCH / - update
@@ -47,6 +48,12 @@ struct MarketingActivitiesExtensionController: RouteCollection {
 	
 	func createHandler(_ req: Request, data: FormDataCreateRequest) throws -> Future<CreateResponse> {
 		let response = CreateResponse()
+		
+		return req.future(response)
+	}
+	
+	func pauseHandler(_ req: Request) throws -> Future<HTTPResponse> {
+		let response = HTTPResponse(status: .ok)
 		
 		return req.future(response)
 	}
