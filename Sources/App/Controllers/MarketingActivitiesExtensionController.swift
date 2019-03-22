@@ -15,9 +15,9 @@ struct MarketingActivitiesExtensionController: RouteCollection {
 		marketingActivitiesRoute.post(FormDataPreloadRequest.self, at: "preload_form_data", use: preloadFormDataHandler)
 		marketingActivitiesRoute.post(FormDataReloadRequest.self, at: "reload_form_data", use: reloadFormDataHandler)
 		marketingActivitiesRoute.post(PreviewRequest.self, at: "preview", use: previewHandler)
+		marketingActivitiesRoute.post(FormDataCreateRequest.self, at: "", use: createHandler)
 		
 		// todo:
-		// POST / - create activity
 		// PATCH / - update
 		// PATCH /pause - pause activity
 		// PATCH /resume - resume activity
@@ -41,6 +41,12 @@ struct MarketingActivitiesExtensionController: RouteCollection {
 		let preview = Preview(previewURL: "http://robinsenior.com/images/cowboy_small.jpg", contentType: "image/jpeg", width: 360, height: 360)
 
 		let response = PreviewResponse(desktop: preview, mobile: preview)
+		
+		return req.future(response)
+	}
+	
+	func createHandler(_ req: Request, data: FormDataCreateRequest) throws -> Future<CreateResponse> {
+		let response = CreateResponse()
 		
 		return req.future(response)
 	}
