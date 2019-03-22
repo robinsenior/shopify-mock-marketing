@@ -43,8 +43,21 @@ struct Preview: Content {
 	let contentType: String
 	let width: Int
 	let height: Int
+	
+	init(previewURL: String, contentType: String, width: Int, height: Int) {
+		self.previewURL = previewURL
+		self.contentType = contentType
+		self.width = width
+		self.height = height
+	}
 }
 
 struct PreviewResponse: Content {
-	let previews: [Preview.PreviewType: Preview]
+	let mobile: Preview?
+	let desktop: Preview?
+	
+	init(desktop: Preview?, mobile: Preview?) {
+		self.desktop = desktop
+		self.mobile = mobile
+	}
 }

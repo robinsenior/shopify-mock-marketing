@@ -20,7 +20,7 @@ struct FormDataPreloadRequest: Content {
 	let shopID: String
 	let userID: Int
 	let locale: String
-	let marketingActivityID: Int?
+	let marketingActivityID: String?
 }
 
 struct FormDataReloadRequest: Content {

@@ -38,7 +38,9 @@ struct MarketingActivitiesExtensionController: RouteCollection {
 	}
 	
 	func previewHandler(_ req: Request, data: PreviewRequest) throws -> Future<PreviewResponse> {
-		let response = PreviewResponse(previews: [:])
+		let preview = Preview(previewURL: "http://robinsenior.com/images/cowboy_small.jpg", contentType: "image/jpeg", width: 360, height: 360)
+
+		let response = PreviewResponse(desktop: preview, mobile: preview)
 		
 		return req.future(response)
 	}
