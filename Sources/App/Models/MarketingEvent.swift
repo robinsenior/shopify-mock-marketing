@@ -42,7 +42,7 @@ struct MarketingEvent: Content {
 	let eventType: EventType
 	let marketingChannel: MarketingChannel
 	let paid: Bool
-	let startedAt: Date
+	let startedAt: Date?
 }
 
 extension MarketingEvents: ShopifyResource {
