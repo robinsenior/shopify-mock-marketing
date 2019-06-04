@@ -20,7 +20,7 @@ struct MarketingActivitiesExtensionController: RouteCollection {
 		marketingActivitiesRoute.patch("resume", use: resumeHandler)
 		marketingActivitiesRoute.patch(FormDataCreateRequest.self, at: "", use: updateHandler)
 		marketingActivitiesRoute.post(FormDataCreateRequest.self, at: "republish", use: republishHandler)
-		
+		marketingActivitiesRoute.patch(FormDataDeleteRequest.self, at: "delete", use: deleteHandler)
 		// todo:
 		// POST /load_field/:field_name
 	}
@@ -71,6 +71,12 @@ struct MarketingActivitiesExtensionController: RouteCollection {
 	
 	func resumeHandler(_ req: Request) throws -> Future<HTTPResponse> {
 		let response = HTTPResponse(status: .ok)
+		
+		return req.future(response)
+	}
+	
+	func deleteHandler(_ req: Request, data: FormDataDeleteRequest) throws -> Future<HTTPResponse> {
+		let response = HTTPResponse(status: .accepted)
 		
 		return req.future(response)
 	}
