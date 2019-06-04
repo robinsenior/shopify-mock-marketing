@@ -38,7 +38,7 @@ extension ImperialController {
 		
 		print("2. Redirecting to authentication flow")
 		
-		let authURL = try shopifyRouter.shopifyRouter.generateAuthenticationURL(request: req)
+		let authURL = try shopifyRouter.shopifyRouter.authURL(req)
 		
 		let html = """
 		<html><script>location.href = "\(authURL)"</script></html>
@@ -57,6 +57,7 @@ extension ImperialController: RouteCollection {
 		shopifyRouter = try Shopify(
 			router: router,
 			authenticate: "login-shopify",
+			authenticateCallback: nil,
 			callback: callbackURL,
 			scope: ["read_marketing_events", "write_marketing_events"],
 			completion: processShopifyLogin
